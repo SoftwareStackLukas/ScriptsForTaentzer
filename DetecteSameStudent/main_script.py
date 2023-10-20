@@ -2,9 +2,20 @@ from database.csvimport import CSV_IMPORTER
 from database.students_database import StudentDatabase
 import os
 
-###
-### Print here a text in a pretty way which explains how this app works
-###
+from rich import print
+from rich.panel import Panel
+
+instructions = """
+1.) The structure of the CSV file shall be: name, username, email
+2.) It can contain or not the header. This can be specified via the console.
+3.) You can compare multiple .csv files for redundant data.
+4.) Please, provide the whole path to the folder in which all .csv files are stored.
+5.) This is just a demo version and can be extended in future.
+"""
+
+panel = Panel.fit(instructions, title="Attention! Please, consider the following rules", border_style="blue")
+print(panel)
+
 
 while True:
     #Add a selector for csv, pdf etc.
