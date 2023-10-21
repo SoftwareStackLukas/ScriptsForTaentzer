@@ -5,9 +5,8 @@ from database.student import Student
 
 class StudentDatabase:
     """Class representing a database of students"""
-    def __init__(self, src_folder: str) -> None:
+    def __init__(self) -> None:
         self.students: list[Student] = []
-        self.src_folder: str = src_folder
 
     def add_student(self, name: str, username: str, email: str) -> None:
         """Adds a student to the database. 

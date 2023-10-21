@@ -16,7 +16,6 @@ instructions = """
 panel = Panel.fit(instructions, title="Attention! Please, consider the following rules", border_style="blue")
 print(panel)
 
-
 while True:
     #Add a selector for csv, pdf etc.
     try:
@@ -24,7 +23,7 @@ while True:
         user_input = input("Has Header (y/n): ").strip().lower()
         has_header = {"y": True, "n": False}.get(user_input, False)
         seperator = input("Seperator: ")
-        db = StudentDatabase(src)
+        db = StudentDatabase()
         importer = CSV_IMPORTER(src, has_header, seperator)
         db.import_database(importer)
         output = db.find_duplicated_students()  # Assuming this returns a list of objects
