@@ -6,14 +6,14 @@ import csv
 
 class CSV_IMPORTER(Importer):
     """An Importer for data from a csv file"""
-    def __init__(self, url_path, has_header, seperator):
+    def __init__(self, url_path: str, has_header: bool, seperator: str):
         super().__init__(url_path)
         self.has_header = has_header
         self.seperator = seperator
 
-    def import_students(self) -> []:
-        onlyfiles = self.load_all_files()
-        result: [] = []
+    def import_students(self) -> list[Student]:
+        onlyfiles: list[str] = self.load_all_files()
+        result: list[Student] = []
         if len(onlyfiles) != 0:
             for file in onlyfiles:
                 file_path = self.url_path + "/" + file
@@ -34,14 +34,12 @@ class CSV_IMPORTER(Importer):
                     print(f"An unexpected error occurred: {e}")
         return result
 
-    def load_all_files(self):
-        try:
-            onlyfiles = [f for f in listdir(self.url_path) if isfile(join(self.url_path, f))]
-            onlyfiles = [f for f in onlyfiles if f.endswith(".csv")]
-        except Exception as e:
-            print("Error: " + e)
-        return onlyfiles
+    def load_all_files(self) -> list[str]:
+        super().load_all_files(".csv")
 
-#importing = CSV_IMPORTER("D:\_GitHub_Projects\ScriptsForTaentzer\DetecteSameStudent\csvfiles", False, ",")
-#importing = CSV_IMPORTER("csvfiles", False, ",")
-#cprint(importing.import_students()[0])
+        #try:
+            #onlyfiles = [f for f in listdir(self.url_path) if isfile(join(self.url_path, f))]
+            #onlyfiles = [f for f in onlyfiles if f.endswith(".csv")]
+        #except Exception as e:
+            #print("Error: " + e)
+        #return onlyfiles
